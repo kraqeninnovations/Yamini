@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Sparkles, Award, ShieldCheck } from "lucide-react";
 import { InstagramIcon } from "@/components/common/SocialIcons";
@@ -10,24 +11,33 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-20 sm:pb-28">
+    <div className="pt-28 pb-20 sm:pb-28 bg-[#F6F0E8]/30">
       {/* Hero Banner for About */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Visual Portrait Container */}
           <div className="relative max-w-md mx-auto lg:max-w-none w-full">
-            <div className="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] max-h-[640px] w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 bg-burgundy-deep/10">
-              <picture>
-                <source srcSet="/images/yamini-portrait.webp" type="image/webp" />
-                <img
-                  src="/IMG_9890.JPEG"
-                  alt="Yamini - Lead Bridal Makeup Artist and Founder of Makeup 101, Chennai"
-                  className="w-full h-full object-cover object-[center_12%] hover:scale-102 transition-transform duration-700"
-                  loading="eager"
-                />
-              </picture>
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] max-h-[640px] w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 bg-burgundy/10">
+              {/* Authentic Profile Image: Yamini */}
+              <Image
+                src="/images/about/yamini.webp"
+                alt="Yamini - Lead Bridal Makeup Artist and Founder of Makeup 101, Chennai"
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 540px"
+                style={{ objectPosition: "center 15%" }}
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-burgundy/70 via-transparent to-transparent pointer-events-none" />
+              {/* Artist Badge */}
+              <div className="absolute top-4 left-4 z-20">
+                <span className="px-3.5 py-1 rounded-full bg-burgundy/90 backdrop-blur-md text-ivory text-[10px] font-semibold tracking-wider uppercase border border-gold/40 shadow-sm inline-flex items-center gap-1.5">
+                  <Sparkles size={12} className="text-gold" />
+                  <span>Lead Bridal Artist</span>
+                </span>
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent pointer-events-none" />
               
               <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-ivory/95 backdrop-blur-md border border-gold/40 text-burgundy shadow-lg">
                 <div className="flex items-center justify-between">

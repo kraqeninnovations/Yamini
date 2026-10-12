@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { PortfolioItem } from "@/data/portfolio";
@@ -111,10 +112,13 @@ export default function Lightbox({ items, currentIndex, isOpen, onClose, onPrev,
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative overflow-hidden rounded-xl shadow-2xl border border-gold/30 bg-burgundy-dark/50">
-            <img
+            <Image
               src={currentItem.src}
               alt={currentItem.alt}
-              className="max-h-[65vh] w-auto object-contain mx-auto"
+              width={currentItem.width || 1200}
+              height={currentItem.height || 1600}
+              className="max-h-[65vh] w-auto h-auto max-w-full object-contain mx-auto"
+              priority
             />
           </div>
 

@@ -161,36 +161,64 @@ export default function ReelViewer({ reels, initialIndex = 0, isOpen, onClose }:
             </div>
           </div>
 
-          {/* Video Player */}
+          {/* Video Player or Instagram Fallback */}
           <div 
             className="relative w-full h-full flex items-center justify-center cursor-pointer bg-black"
-            onClick={togglePlay}
+            onClick={currentReel.src ? togglePlay : () => window.open(currentReel.instagramUrl, "_blank")}
           >
-            <video
-              ref={videoRef}
-              key={currentReel.src}
-              src={currentReel.src}
-              poster={currentReel.poster}
-              autoPlay
-              playsInline
-              loop
-              muted={isMuted}
-              onTimeUpdate={handleTimeUpdate}
-              onEnded={nextReel}
-              className="w-full h-full object-cover"
-            />
+            {currentReel.src ? (
+              <>
+                <video
+                  ref={videoRef}
+                  key={currentReel.src}
+                  src={currentReel.src}
+                  poster={currentReel.poster}
+                  autoPlay
+                  playsInline
+                  loop
+                  muted={isMuted}
+                  onTimeUpdate={handleTimeUpdate}
+                  onEnded={nextReel}
+                  className="w-full h-full object-cover"
+                />
 
-            {/* Center Play/Pause Indicator (when paused) */}
-            {!isPlaying && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="absolute inset-0 flex items-center justify-center bg-black/35 pointer-events-none"
-              >
-                <div className="w-16 h-16 rounded-full bg-black/60 text-white flex items-center justify-center border border-gold/40 shadow-xl">
-                  <Play size={28} className="translate-x-0.5" />
+                {/* Center Play/Pause Indicator (when paused) */}
+                {!isPlaying && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="absolute inset-0 flex items-center justify-center bg-black/35 pointer-events-none"
+                  >
+                    <div className="w-16 h-16 rounded-full bg-black/60 text-white flex items-center justify-center border border-gold/40 shadow-xl">
+                      <Play size={28} className="translate-x-0.5" />
+                    </div>
+                  </motion.div>
+                )}
+              </>
+            ) : (
+              <div className="relative w-full h-full flex flex-col items-center justify-center">
+                <img
+                  src={currentReel.poster}
+                  alt={currentReel.title}
+                  className="w-full h-full object-cover filter brightness-[0.7]"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                  <div className="w-16 h-16 rounded-full bg-gold text-burgundy flex items-center justify-center shadow-luxury mb-4 hover:scale-110 transition-transform">
+                    <Play size={28} className="translate-x-0.5" />
+                  </div>
+                  <span className="text-white font-medium text-sm mb-1">Coming Soon to Video Feed</span>
+                  <p className="text-xs text-white/80 max-w-xs mb-4">Tap to watch this reel preview on our Instagram page</p>
+                  <a
+                    href={currentReel.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold text-xs py-2.5 px-5 shadow-sm"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Watch on Instagram
+                  </a>
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
 
@@ -224,7 +252,7 @@ export default function ReelViewer({ reels, initialIndex = 0, isOpen, onClose }:
               {currentReel.title}
             </h3>
             <p className="text-xs text-white/80 line-clamp-2 font-light mb-3">
-              {currentReel.caption || currentReel.description}
+              {currentReel.description}
             </p>
 
             {/* Instagram Link & Follow Button */}

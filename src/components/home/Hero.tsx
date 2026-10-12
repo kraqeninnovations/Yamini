@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight, Calendar, Play } from "lucide-react";
 
@@ -23,18 +24,15 @@ export default function Hero() {
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
           className="w-full h-full"
         >
-          <picture>
-            <source media="(max-width: 640px)" srcSet="/images/hero/hero-bride-480.webp" type="image/webp" />
-            <source media="(max-width: 1024px)" srcSet="/images/hero/hero-bride-768.webp" type="image/webp" />
-            <source srcSet="/images/hero/hero-bride.webp" type="image/webp" />
-            <img
-              src="/images/hero/hero-bride.jpg"
-              alt="South Indian bride with exquisite traditional makeup and gold jewellery by Yamini in Chennai"
-              className="w-full h-full object-cover filter brightness-[0.92]"
-              style={{ objectPosition: "center 20%" }}
-              loading="eager"
-            />
-          </picture>
+          <Image
+            src="/images/portfolio/wedding/21.webp"
+            alt="South Indian Muhurtham bride with exquisite temple jewellery and radiant makeup by Yamini in Chennai"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover filter brightness-[0.92]"
+            style={{ objectPosition: "center 25%" }}
+          />
         </motion.div>
 
         {/* Editorial Gradient Overlays */}

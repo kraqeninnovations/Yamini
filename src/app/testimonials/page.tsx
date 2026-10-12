@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Quote, Sparkles, Video, Calendar } from "lucide-react";
 import { InstagramIcon } from "@/components/common/SocialIcons";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <div className="pt-28 pb-24 sm:pb-32">
+    <div className="pt-28 pb-24 sm:pb-32 bg-[#F6F0E8]/30">
       {/* Page Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <span className="text-xs font-semibold tracking-widest uppercase text-gold block mb-2">
@@ -40,14 +41,17 @@ export default function TestimonialsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-gold/30 shadow-md h-72 sm:h-80 bg-burgundy-deep">
-              <img
-                src="/images/portfolio/bridal-01.webp"
-                alt="Bridal Video Diary - South Indian bride transformation"
-                className="w-full h-full object-cover opacity-85"
+            <div className="relative rounded-2xl overflow-hidden border-2 border-gold/30 shadow-md h-72 sm:h-80 bg-burgundy/10">
+              <Image
+                src="/images/portfolio/wedding/21.webp"
+                alt="Bridal Video Diary - South Indian bride transformation by Yamini"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectPosition: "center 25%" }}
+                className="object-cover opacity-90"
               />
               <div className="absolute inset-0 bg-burgundy/40 flex items-center justify-center p-6 text-center">
-                <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-gold text-burgundy max-w-xs">
+                <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-gold text-burgundy max-w-xs shadow-lg">
                   <Sparkles className="w-6 h-6 text-gold mx-auto mb-2" />
                   <p className="text-xs font-serif font-bold mb-1">
                     Yamini&apos;s Bridal Video Reel Slot
@@ -102,11 +106,14 @@ export default function TestimonialsPage() {
               </div>
 
               <div className="pt-6 border-t border-ivory-200 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full overflow-hidden border border-gold flex-shrink-0">
-                  <img
+                <div className="relative w-14 h-14 rounded-full overflow-hidden border border-gold flex-shrink-0">
+                  <Image
                     src={review.image}
-                    alt={`${review.brideName} wedding look`}
-                    className="w-full h-full object-cover"
+                    alt={`${review.brideName} wedding look by Yamini`}
+                    fill
+                    sizes="56px"
+                    style={{ objectPosition: "center 25%" }}
+                    className="object-cover"
                   />
                 </div>
                 <div>
@@ -135,7 +142,7 @@ export default function TestimonialsPage() {
           <p className="text-ivory/80 text-sm sm:text-base font-light max-w-xl mx-auto mb-8">
             Every bride deserves to feel radiant and serene on her wedding morning. Secure your wedding date with Yamini.
           </p>
-          <Link href="/contact" className="btn-gold text-base py-4 px-8">
+          <Link href="/contact" className="btn-gold text-base py-4 px-8 inline-flex items-center gap-2">
             <Calendar size={18} />
             <span>Enquire for Your Wedding Date</span>
           </Link>

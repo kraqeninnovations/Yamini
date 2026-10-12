@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Calendar, Sparkles } from "lucide-react";
@@ -80,11 +81,15 @@ export default async function JournalDetailPage({
 
       {/* Featured Image */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="rounded-3xl overflow-hidden shadow-xl border border-gold/30 h-[320px] sm:h-[480px]">
-          <img
+        <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gold/30 h-[320px] sm:h-[480px] bg-burgundy/10">
+          <Image
             src={article.image}
             alt={article.alt}
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 896px"
+            style={{ objectPosition: "center 25%" }}
+            className="object-cover"
           />
         </div>
       </div>

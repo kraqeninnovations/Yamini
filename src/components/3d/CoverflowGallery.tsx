@@ -1,13 +1,22 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Eye } from "lucide-react";
-import { portfolioItems } from "@/data/portfolio";
+import { CATEGORIES_DATA } from "@/data/portfolio";
 
 export default function CoverflowGallery({ onSelectLook }: { onSelectLook?: (index: number) => void }) {
-  // Use first 7 curated portfolio highlights
-  const items = portfolioItems.slice(0, 7);
+  // Use 7 category highlights from real portfolio
+  const items = CATEGORIES_DATA.map((cat) => ({
+    id: cat.slug,
+    title: cat.serviceTitle || cat.title,
+    category: cat.title,
+    src: cat.cover,
+    alt: `${cat.title} signature bridal look by Yamini`,
+    slug: cat.slug,
+  }));
   const [activeIndex, setActiveIndex] = useState(2);
   const containerRef = useRef<HTMLDivElement>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
@@ -53,10 +62,10 @@ export default function CoverflowGallery({ onSelectLook }: { onSelectLook?: (ind
     <section className="py-20 sm:py-28 bg-[#F6F0E8] overflow-hidden border-t border-gold/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
         <span className="text-xs font-semibold tracking-widest uppercase text-gold block mb-2">
-          3D Visual Experience
+          Featured Looks
         </span>
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-burgundy mb-4">
-          Featured Bridal Highlights
+          Signature Bridal Highlights
         </h2>
         <div className="gold-divider" />
         <p className="max-w-xl mx-auto text-burgundy/80 text-sm sm:text-base font-light">
@@ -118,16 +127,14 @@ export default function CoverflowGallery({ onSelectLook }: { onSelectLook?: (ind
             >
               {/* Image */}
               <div className="relative w-full h-full">
-                <picture>
-                  <source srcSet={item.src} type="image/webp" />
-                  <img
-                    src={item.fallbackSrc || item.src}
-                    alt={item.alt}
-                    style={{ objectPosition: "center 25%" }}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </picture>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 310px"
+                  style={{ objectPosition: "center 25%" }}
+                  className="object-cover"
+                />
 
                 {/* Dark Gradient Overlay on sides */}
                 <div 
@@ -146,10 +153,13 @@ export default function CoverflowGallery({ onSelectLook }: { onSelectLook?: (ind
                   <h3 className="font-serif text-base sm:text-lg font-bold text-ivory leading-tight mb-1">
                     {item.title}
                   </h3>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/90 text-burgundy text-xs font-semibold mt-2 shadow-sm">
+                  <Link
+                    href={`/portfolio/${item.slug}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/90 text-burgundy text-xs font-semibold mt-2 shadow-sm hover:bg-gold transition-colors"
+                  >
                     <Eye size={13} />
-                    <span>View Detail</span>
-                  </div>
+                    <span>View Looks</span>
+                  </Link>
                 </div>
 
                 {/* Active Gold Rim Halo */}

@@ -33,8 +33,7 @@ export const articles: Article[] = [
     readTime: "5 min read",
     publishDate: "October 2026",
     summary: "Discover effortless yet regal bridal hairstyles tailored for South Indian weddings, from traditional Poo Jadai braids to modern romantic textured buns.",
-    image: "/images/journal/hair-accessories.webp",
-    fallbackImage: "/images/journal/hair-accessories.jpg",
+    image: "/images/portfolio/bridal-hairstyle/01.webp",
     alt: "Chennai bridal hairstyling with traditional Poo Jadai and fresh flowers by Yamini",
     content: `
 When planning your bridal look in Chennai, your hairstyle is just as important as your Kanjeevaram silk saree and jewellery. South Indian brides often have multiple ceremonies—from the early-morning Muhurtham to a vibrant evening reception—each demanding a hairstyle that is not only visually stunning but also secure enough to withstand humidity, heavy hair ornaments, and hours under the camera lights.
@@ -66,8 +65,7 @@ When choosing Chennai bridal hairstyling, always take into account your neckline
     readTime: "4 min read",
     publishDate: "October 2026",
     summary: "The bindi is the sacred finishing touch of any South Indian bridal look. Learn how to choose the right size, shape, and design for your face cut and jewellery.",
-    image: "/images/portfolio/bridal-01.webp",
-    fallbackImage: "/images/portfolio/bridal-01.jpg",
+    image: "/images/portfolio/wedding/21.webp",
     alt: "South Indian bride wearing elegant red bridal bindi with temple jewellery by Yamini",
     content: `
 In traditional South Indian bridal makeup, the bindi (pottu) holds immense cultural significance. It is placed at the Ajna chakra—the center of wisdom and intuition—and serves as the visual focal point of the bride's forehead, bridging the gap between her eyebrows and her glittering maang tikka or nethichutti.
@@ -99,8 +97,7 @@ Before fixing your bindi size, always check how your nethichutti sits. If your m
     readTime: "6 min read",
     publishDate: "October 2026",
     summary: "Step into the bridal vanity suite. A transparent look at skin preparation, color correction, and the calming process behind your wedding morning look.",
-    image: "/images/portfolio/bts-01.webp",
-    fallbackImage: "/images/portfolio/bts-01.jpg",
+    image: "/images/portfolio/engagement/02.webp",
     alt: "Behind the scenes bridal vanity preparation and makeup artist transformation by Yamini, Chennai",
     content: `
 A bridal makeup transformation is never about masking your natural beauty under heavy foundation layers. At Makeup 101 by Yamini in Chennai, our philosophy is centered on celebrating your authentic features while giving you a radiant, camera-ready glow that lasts 12+ hours under warm lighting and emotional tears.
@@ -131,8 +128,7 @@ We seal the entire look with a fine micro-mist of hydrating setting spray, hand 
     readTime: "5 min read",
     publishDate: "October 2026",
     summary: "Essential questions every bride in Chennai must ask before locking in her bridal makeup artist to guarantee a smooth, stress-free wedding morning.",
-    image: "/images/journal/dear-bride.webp",
-    fallbackImage: "/images/journal/dear-bride.jpg",
+    image: "/images/portfolio/reception/11.webp",
     alt: "Happy bride during consultation with bridal makeup artist Yamini in Chennai",
     content: `
 Your bridal makeup artist is one of the most critical vendors you will book for your wedding day. You will spend the most intimate, nervous, and excited hours of your wedding morning with your artist. Choosing someone who understands your aesthetic, values hygiene, and brings a reassuring presence is essential.
@@ -163,8 +159,7 @@ Some high-volume makeup studios book 3 or 4 brides back-to-back, sending assista
     readTime: "5 min read",
     publishDate: "October 2026",
     summary: "Make the absolute most of your bridal makeup trial session with this step-by-step preparation checklist for brides in Chennai.",
-    image: "/images/portfolio/softglam-01.webp",
-    fallbackImage: "/images/portfolio/softglam-01.jpg",
+    image: "/images/portfolio/guest-makeover/14.webp",
     alt: "Bridal makeup trial session preparing wedding look in Chennai by Yamini",
     content: `
 A bridal makeup trial is your opportunity to experiment, communicate, and preview your wedding appearance before the big day arrives. It removes guesswork, calms pre-wedding jitters, and ensures you walk into your wedding day with 100% confidence.

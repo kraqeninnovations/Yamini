@@ -1,0 +1,160 @@
+[
+  {
+    "pdf": "Bridal hairstyle portfolio.pdf",
+    "slug": "bridal-hairstyle",
+    "extracted": 36,
+    "kept": 32,
+    "discarded": 4,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-007-025.png",
+        "Exact duplicate of img-007-022.png (908x1210)"
+      ],
+      [
+        "img-007-026.png",
+        "Exact duplicate of img-007-024.png (908x1210)"
+      ],
+      [
+        "img-010-035.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/bridal-hairstyle/01.webp"
+  },
+  {
+    "pdf": "Engagement Makeover Portfolio.pdf",
+    "slug": "engagement",
+    "extracted": 17,
+    "kept": 15,
+    "discarded": 2,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-005-016.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/engagement/02.webp"
+  },
+  {
+    "pdf": "Makeup101 by Yamini_Editorial_Portfolio.pdf",
+    "slug": "editorial",
+    "extracted": 37,
+    "kept": 33,
+    "discarded": 4,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-003-007.png",
+        "Tiny image width 342px < 400px (342x512)"
+      ],
+      [
+        "img-007-029.png",
+        "Exact duplicate of img-005-019.png (585x583)"
+      ],
+      [
+        "img-009-036.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/editorial/19.webp"
+  },
+  {
+    "pdf": "Non Bridal (Guest) Makeover Portfolio.pdf",
+    "slug": "guest-makeover",
+    "extracted": 20,
+    "kept": 18,
+    "discarded": 2,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-006-019.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/guest-makeover/14.webp"
+  },
+  {
+    "pdf": "Reception Makeover Portfolio.pdf",
+    "slug": "reception",
+    "extracted": 31,
+    "kept": 28,
+    "discarded": 3,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-005-018.png",
+        "Tiny image width 384px < 400px (384x512)"
+      ],
+      [
+        "img-009-030.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/reception/11.webp"
+  },
+  {
+    "pdf": "Saree drape Portfolio.pdf",
+    "slug": "saree-drape",
+    "extracted": 14,
+    "kept": 12,
+    "discarded": 2,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-005-013.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/saree-drape/10.webp"
+  },
+  {
+    "pdf": "Wedding makeover portfolio.pdf",
+    "slug": "wedding",
+    "extracted": 27,
+    "kept": 22,
+    "discarded": 5,
+    "discard_reasons": [
+      [
+        "img-001-000.png",
+        "Slide 1 template background graphic (768x1024)"
+      ],
+      [
+        "img-004-013.png",
+        "Tiny image width 384px < 400px (384x512)"
+      ],
+      [
+        "img-005-017.png",
+        "Tiny image width 373px < 400px (373x484)"
+      ],
+      [
+        "img-005-018.png",
+        "Tiny image width 384px < 400px (384x512)"
+      ],
+      [
+        "img-007-026.png",
+        "Closing slide brand logo (450x450)"
+      ]
+    ],
+    "cover": "/images/portfolio/wedding/21.webp"
+  }
+]

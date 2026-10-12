@@ -54,10 +54,10 @@ export const metadata: Metadata = {
       "Your Beauty. Your Bridal Story. Your Moment. Authentic South Indian bridal transformations, reception soft glam, and saree draping in Chennai.",
     images: [
       {
-        url: "/images/hero/hero-bride.webp",
-        width: 1200,
-        height: 630,
-        alt: "Makeup 101 by Yamini Bridal Artistry",
+        url: "/images/portfolio/wedding/21.webp",
+        width: 1210,
+        height: 1815,
+        alt: "Makeup 101 by Yamini Bridal Artistry Chennai",
       },
     ],
   },
@@ -75,7 +75,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "BeautySalon",
     name: "Makeup 101 by Yamini",
-    image: "https://makeup101byyamini.com/images/hero/hero-bride.webp",
+    image: "https://makeup101byyamini.com/images/portfolio/wedding/21.webp",
     description:
       "Bridal makeup artist specializing in South Indian Muhurtham makeup, reception soft glam, floral hairstyles, and saree draping in Chennai.",
     telephone: "+91-99404-72471",

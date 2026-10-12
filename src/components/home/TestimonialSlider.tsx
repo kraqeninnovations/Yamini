@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Sparkles } from "lucide-react";
@@ -66,12 +67,14 @@ export default function TestimonialSlider() {
                 className="flex flex-col md:flex-row items-center gap-8 lg:gap-12"
               >
                 {/* Bride Avatar / Photo Slot */}
-                <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-gold p-1 flex-shrink-0 shadow-md">
-                  <img
+                <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-gold p-1 flex-shrink-0 shadow-md bg-burgundy/10">
+                  <Image
                     src={current.image}
                     alt={`${current.brideName} wedding look in Chennai`}
-                    className="w-full h-full object-cover rounded-full"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 640px) 112px, 144px"
+                    style={{ objectPosition: "center 25%" }}
+                    className="object-cover rounded-full"
                   />
                 </div>
 

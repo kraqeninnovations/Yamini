@@ -1,47 +1,56 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Check, Sparkles, Calendar, Eye } from "lucide-react";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Bridal Services | Makeup 101 by Yamini Chennai",
-  description: "Explore our bespoke bridal services: Bridal Makeup, Hairstyling, Saree & Lehenga Draping, Engagement, and Reception looks in Chennai.",
+  title: "Our Services | Makeup 101 by Yamini Chennai",
+  description: "Explore our comprehensive bridal offerings: Bridal Makeup, Hairstyling, Saree Draping, Engagement, Reception, and Editorial looks in Chennai by Yamini.",
 };
 
 export default function ServicesPage() {
   return (
-    <div className="pt-28 pb-24 sm:pb-32">
+    <div className="pt-28 pb-24 sm:pb-32 bg-[#F6F0E8]/40">
       {/* Page Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-20">
         <span className="text-xs font-semibold tracking-widest uppercase text-gold block mb-2">
-          Comprehensive Bridal Offerings
+          Tailored Artistry
         </span>
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-burgundy mb-4">
-          Our Bridal Services
-        </h1>
+        <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-burgundy mb-2">
+          Our Services
+        </h2>
+        <p className="font-serif text-lg sm:text-xl text-gold font-medium italic mb-4">
+          Comprehensive Bridal Offerings
+        </p>
         <div className="gold-divider" />
         <p className="max-w-2xl mx-auto text-burgundy/80 text-base sm:text-lg font-light leading-relaxed">
           Every bridal look is tailored to your unique skin tone, ceremony timing, and outfit details. Pricing and availability are tailored per wedding schedule upon enquiry.
         </p>
       </section>
 
-      {/* 6 Services Detailed Grid */}
+      {/* 7 Services Detailed Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {services.map((service) => (
             <article
               key={service.id}
-              className="bg-white rounded-3xl overflow-hidden border border-gold/20 shadow-sm hover:shadow-luxury hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+              className="group bg-white rounded-3xl overflow-hidden border border-gold/20 shadow-sm hover:shadow-luxury hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Visual Image */}
+              {/* Visual Image with Hover Zoom & Gold Glow Overlay */}
               <div>
-                <div className="relative h-64 overflow-hidden">
-                  <img
+                <div className="relative h-64 overflow-hidden bg-burgundy/10">
+                  <Image
                     src={service.image}
                     alt={service.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectPosition: "center 25%" }}
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
+                  {/* Subtle Gold Hover Overlay */}
+                  <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
                   <div className="absolute top-4 left-4 bg-burgundy/90 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-medium text-ivory tracking-wider border border-gold/40">
                     {service.category}
                   </div>
@@ -49,11 +58,11 @@ export default function ServicesPage() {
 
                 {/* Body Content */}
                 <div className="p-6 sm:p-8">
-                  <h2 className="font-serif text-2xl font-bold text-burgundy mb-3">
+                  <h3 className="font-serif text-2xl font-bold text-burgundy mb-2">
                     {service.title}
-                  </h2>
+                  </h3>
                   <p className="text-burgundy/80 text-sm leading-relaxed font-light mb-6">
-                    {service.description}
+                    {service.shortDesc || service.description}
                   </p>
 
                   {/* Service Highlights */}
@@ -76,16 +85,16 @@ export default function ServicesPage() {
               {/* Card Action Buttons (View Looks / Enquire Now) */}
               <div className="p-6 sm:p-8 pt-0 flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/portfolio"
-                  className="btn-burgundy-outline text-xs py-3 px-4 flex-1 text-center justify-center"
+                  href={`/portfolio?category=${service.slug}`}
+                  className="btn-burgundy-outline text-xs py-3 px-4 flex-1 text-center justify-center flex items-center gap-1.5"
                   aria-label={`View looks for ${service.title}`}
                 >
                   <Eye size={14} />
                   <span>View Looks</span>
                 </Link>
                 <Link
-                  href={`/contact?service=${encodeURIComponent(service.title)}`}
-                  className="btn-gold text-xs py-3 px-4 flex-1 text-center justify-center shadow-sm"
+                  href={`/contact?service=${service.slug}`}
+                  className="btn-gold text-xs py-3 px-4 flex-1 text-center justify-center shadow-sm flex items-center gap-1.5"
                   aria-label={`Enquire now for ${service.title}`}
                 >
                   <Calendar size={14} />
@@ -99,14 +108,14 @@ export default function ServicesPage() {
 
       {/* Tailored Booking Callout */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 text-center">
-        <div className="bg-ivory rounded-3xl p-8 sm:p-12 border border-gold/30">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gold/30 shadow-sm">
           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-burgundy mb-4">
             Need a Customized Bridal Package?
           </h3>
           <p className="text-burgundy/80 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto mb-8">
             We design cohesive schedules for multi-day weddings (Muhurtham, Reception, Engagement, Sangeet). Let us know your event dates and required services.
           </p>
-          <Link href="/contact" className="btn-gold text-sm py-3.5 px-8">
+          <Link href="/contact" className="btn-gold text-sm py-3.5 px-8 inline-flex items-center gap-2">
             <Sparkles size={16} />
             Request Custom Wedding Quote
           </Link>

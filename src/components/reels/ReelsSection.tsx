@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Play, ArrowRight, Sparkles } from "lucide-react";
-import { reelsData } from "@/data/reels";
+import { reelsData, ReelItem } from "@/data/reels";
 import ReelViewer from "./ReelViewer";
 import TiltCard from "../3d/TiltCard";
 
@@ -14,8 +15,8 @@ export default function ReelsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  // Display top 4 featured reels on Home page
-  const featuredReels = reelsData.slice(0, 4);
+  // Display top 4-6 featured reels on Home page
+  const featuredReels: ReelItem[] = reelsData.filter((r) => r.featured).slice(0, 4);
 
   // Single-video autoplay IntersectionObserver
   useEffect(() => {
@@ -64,11 +65,11 @@ export default function ReelsSection() {
               <span>Watch Our Work in Motion</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-burgundy mb-3">
-              Bridal Reels & Masterclasses
+              Watch Our Work
             </h2>
             <div className="w-16 h-[2px] bg-gradient-to-r from-gold via-gold-light to-gold-dark rounded-full mb-4" />
             <p className="text-burgundy/80 text-base sm:text-lg font-light leading-relaxed">
-              Step inside Yamini&apos;s vanity room. Watch unfiltered 4K bridal transformations, hairstyle techniques, and candid advice for future brides.
+              Step inside Yamini&apos;s vanity room. Watch unfiltered 4K bridal transformations, hairstyle masterclasses, and candid advice for future brides.
             </p>
           </div>
 
@@ -76,8 +77,9 @@ export default function ReelsSection() {
             <Link
               href="/reels"
               className="btn-gold-outline text-sm py-3 px-6 rounded-full inline-flex items-center gap-2 group min-h-[44px]"
+              id="home-view-all-reels-btn"
             >
-              <span>Explore All {reelsData.length} Reels</span>
+              <span>View All Reels</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -89,7 +91,7 @@ export default function ReelsSection() {
           className="reel-snap-container flex gap-4 overflow-x-auto pb-6 pt-2 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 no-scrollbar"
         >
           {featuredReels.map((reel, index) => {
-            const isPlaying = activePlayingId === reel.id;
+            const isPlaying = activePlayingId === reel.id && Boolean(reel.src);
 
             return (
               <div
@@ -112,8 +114,8 @@ export default function ReelsSection() {
                       }
                     }}
                   >
-                    {/* Background Video / Poster */}
-                    {isPlaying ? (
+                    {/* Background Video / Next.js Image */}
+                    {isPlaying && reel.src ? (
                       <video
                         src={reel.src}
                         poster={reel.poster}
@@ -124,15 +126,16 @@ export default function ReelsSection() {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <picture>
-                        <source srcSet={reel.poster} type="image/webp" />
-                        <img
-                          src={reel.poster.replace(".webp", ".jpg")}
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={reel.poster}
                           alt={reel.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          fill
+                          sizes="(max-width: 640px) 260px, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          style={{ objectPosition: "center 25%" }}
                         />
-                      </picture>
+                      </div>
                     )}
 
                     {/* Gradient Overlay */}
@@ -141,7 +144,7 @@ export default function ReelsSection() {
                     {/* Category Chip */}
                     <div className="absolute top-3.5 left-3.5 z-20">
                       <span className="px-2.5 py-1 rounded-full bg-burgundy/80 backdrop-blur-md text-ivory text-[10px] font-semibold tracking-wider uppercase border border-gold/40 shadow-sm">
-                        {reel.category}
+                        {reel.tutorialNumber ? `Tutorial ${reel.tutorialNumber}/100` : reel.category}
                       </span>
                     </div>
 
@@ -154,14 +157,11 @@ export default function ReelsSection() {
 
                     {/* Bottom Metadata */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white z-20 pointer-events-none">
-                      <span className="text-[11px] font-mono text-gold/90 block mb-1">
-                        {reel.duration} min
-                      </span>
                       <h3 className="font-serif text-sm sm:text-base font-bold text-white line-clamp-2 leading-snug group-hover:text-gold transition-colors">
                         {reel.title}
                       </h3>
                       <p className="text-[11px] text-white/70 line-clamp-1 mt-1 font-light">
-                        {reel.caption}
+                        {reel.description}
                       </p>
                     </div>
                   </div>
